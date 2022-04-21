@@ -32,14 +32,15 @@ const generateKeyStore = (key, password) => {
 
 const getKeyStore = (file, password) => {
 
-    fs.readFile(file, "utf-8", (err, wallet)=>{
+    fs.readFile(file, "utf-8", (err, keyStore)=>{
         if (err) {
 
             console.log(err)
 
         }
 
-        return wallet.privateKey
+        const wallet = web3.eth.accounts.decrypt(keyStore, password)
+        console.log(wallet)
     })
 
 }
