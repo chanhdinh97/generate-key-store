@@ -30,14 +30,16 @@ const generateKeyStore = (key, password) => {
 
 }
 
-const getKeyStore = (file) => {
+const getKeyStore = (file, password) => {
 
     fs.readFile(file, "utf-8", (err, wallet)=>{
         if (err) {
+
             console.log(err)
+
         }
 
-        console.log(wallet)
+        return wallet.privateKey
     })
 
 }
